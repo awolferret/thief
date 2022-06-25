@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 141844673}
   - component: {fileID: 141844674}
   - component: {fileID: 141844672}
+  - component: {fileID: 141844676}
   m_Layer: 0
   m_Name: house
   m_TagString: Untagged
@@ -241,7 +242,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6c38f4278a96a1740a0ab2ba802595fc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.01
+  m_Volume: 0.09
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -357,6 +358,19 @@ RectTransform:
   m_AnchoredPosition: {x: -3.1448, y: 0.07}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &141844676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141844669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9be2330c8b3ae64ea2ac6c9b84c272d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alarm: {fileID: 141844674}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +424,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.3299036
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

@@ -8,6 +8,7 @@ public class Alarm : MonoBehaviour
     [SerializeField] private AudioSource _audio;
 
     private float _volumeScale = 0.01f;
+    private Coroutine _coroutine;
 
     private void Start()
     {
@@ -22,15 +23,14 @@ public class Alarm : MonoBehaviour
     public void IncreaseVolume()
     {
         float _target = 1f;
-        StopCoroutine(ChangingVolume(_target));
-        StartCoroutine(ChangingVolume(_target));
+        _coroutine = StartCoroutine(ChangingVolume(_target));
     }
 
     public void DecreaseVolume()
     {
         float _target = 0f;
-        StopCoroutine(ChangingVolume(_target));
-        ChangingVolume(_target);
+        StopCoroutine(_coroutine);
+        _coroutine = StartCoroutine(ChangingVolume(_target));
     }
 
     private IEnumerator ChangingVolume(float _target)
