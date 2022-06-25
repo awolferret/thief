@@ -30,7 +30,7 @@ public class Alarm : MonoBehaviour
     {
         float _target = 0f;
         StopCoroutine(ChangingVolume(_target));
-        StartCoroutine(ChangingVolume(_target));
+        ChangingVolume(_target);
     }
 
     private IEnumerator ChangingVolume(float _target)
