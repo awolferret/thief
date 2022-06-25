@@ -12,7 +12,7 @@ public class Alarm : MonoBehaviour
 
     private void Start()
     {
-        _audio.volume = 0.01f;
+        _audio.volume = 0f;
     }
 
     public void StartSiren()
@@ -22,15 +22,15 @@ public class Alarm : MonoBehaviour
 
     public void IncreaseVolume()
     {
-        StopCoroutine(ChangingVolume(_target));
         _target = 1f;
+        StopCoroutine(ChangingVolume(_target));
         StartCoroutine(ChangingVolume(_target));
     }
 
     public void DecreaseVolume()
     {
-        StopCoroutine(ChangingVolume(_target));
         _target = 0f;
+        StopCoroutine(ChangingVolume(_target));
         StartCoroutine(ChangingVolume(_target));
     }
 
