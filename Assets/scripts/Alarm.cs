@@ -15,25 +15,25 @@ public class Alarm : MonoBehaviour
         _audio.volume = 0.01f;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void StartAlarm()
     {
         _audio.Play();
-        StopCoroutine(DecreaseVolume());
+        StopCoroutine(DecreasingVolume());
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public void IncreaseVolume()
     {
         _target = 1f;
         _audio.volume = Mathf.MoveTowards(_audio.volume, _target, _volumeScale);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public void DecreaseVoume()
     {
         _target = 0f;
-        StartCoroutine(DecreaseVolume());
+        StartCoroutine(DecreasingVolume());
     }
 
-    private IEnumerator DecreaseVolume()
+    private IEnumerator DecreasingVolume()
     {
         while (_audio.volume != _target)
         {
