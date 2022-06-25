@@ -8,7 +8,7 @@ public class House : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        alarm.StartAlarm();
+        alarm.StartSiren();
     }
 
     private void OnTriggerStay2D(Collider2D collision)

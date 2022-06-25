@@ -15,22 +15,32 @@ public class Alarm : MonoBehaviour
         _audio.volume = 0.01f;
     }
 
-    public void StartAlarm()
+    public void StartSiren()
     {
         _audio.Play();
-        StopCoroutine(DecreasingVolume());
     }
 
     public void IncreaseVolume()
     {
         _target = 1f;
-        _audio.volume = Mathf.MoveTowards(_audio.volume, _target, _volumeScale);
+        StopCoroutine(DecreasingVolume());
+        StartCoroutine(IncreasingVolume());
     }
 
     public void DecreaseVoume()
     {
         _target = 0f;
+        StopCoroutine(IncreasingVolume());
         StartCoroutine(DecreasingVolume());
+    }
+
+    private IEnumerator IncreasingVolume()
+    {
+        while (_audio.volume != _target)
+        {
+            _audio.volume = Mathf.MoveTowards(_audio.volume, _target, _volumeScale);
+            yield return new WaitForSeconds(0.05f);
+        }
     }
 
     private IEnumerator DecreasingVolume()
