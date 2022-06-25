@@ -22,31 +22,23 @@ public class Alarm : MonoBehaviour
 
     public void IncreaseVolume()
     {
+        StopCoroutine(ChangingVolume(_target));
         _target = 1f;
-        StopCoroutine(DecreasingVolume());
-        StartCoroutine(IncreasingVolume());
+        StartCoroutine(ChangingVolume(_target));
     }
 
-    public void DecreaseVoume()
+    public void DecreaseVolume()
     {
+        StopCoroutine(ChangingVolume(_target));
         _target = 0f;
-        StopCoroutine(IncreasingVolume());
-        StartCoroutine(DecreasingVolume());
+        StartCoroutine(ChangingVolume(_target));
     }
 
-    private IEnumerator IncreasingVolume()
+    private IEnumerator ChangingVolume(float _target)
     {
         while (_audio.volume != _target)
         {
-            _audio.volume = Mathf.MoveTowards(_audio.volume, _target, _volumeScale);
-            yield return new WaitForSeconds(0.05f);
-        }
-    }
-
-    private IEnumerator DecreasingVolume()
-    {
-        while (_audio.volume != _target)
-        {
+            Debug.Log(_target);
             _audio.volume = Mathf.MoveTowards(_audio.volume, _target, _volumeScale);
             yield return new WaitForSeconds(0.05f);
         }

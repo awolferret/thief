@@ -9,15 +9,11 @@ public class House : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         alarm.StartSiren();
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
         alarm.IncreaseVolume();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        alarm.DecreaseVoume();
+        alarm.DecreaseVolume();
     }
 }
