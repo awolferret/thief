@@ -10,11 +10,6 @@ public class Alarm : MonoBehaviour
     private float _volumeScale = 0.01f;
     private Coroutine _coroutine;
 
-    private void Start()
-    {
-        _audio.volume = 0f;
-    }
-
     public void StartSiren()
     {
         _audio.Play();
@@ -33,14 +28,20 @@ public class Alarm : MonoBehaviour
         _coroutine = StartCoroutine(ChangingVolume(_target));
     }
 
+    private void Start()
+    {
+        _audio.volume = 0f;
+    }
+
     private IEnumerator ChangingVolume(float _target)
     {
-        var waitTime = new WaitForSeconds(0.05f);
+        float waitTime = 0.05f;
+        var waitType = new WaitForSeconds(waitTime);
 
         while (_audio.volume != _target)
         {
             _audio.volume = Mathf.MoveTowards(_audio.volume, _target, _volumeScale);
-            yield return waitTime;
+            yield return waitType;
         }
     }
 }
