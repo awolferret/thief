@@ -18,19 +18,23 @@ public class Alarm : MonoBehaviour
     public void IncreaseVolume()
     {
         float _target = 1f;
+        CheckCoroutine();
         _coroutine = StartCoroutine(ChangingVolume(_target));
     }
 
     public void DecreaseVolume()
     {
         float _target = 0f;
+        CheckCoroutine();
+        _coroutine = StartCoroutine(ChangingVolume(_target));
+    }
 
+    private void CheckCoroutine()
+    {
         if (_coroutine != null)
         {
             StopCoroutine(_coroutine);
         }
-
-        _coroutine = StartCoroutine(ChangingVolume(_target));
     }
 
     private void Start()
