@@ -24,7 +24,12 @@ public class Alarm : MonoBehaviour
     public void DecreaseVolume()
     {
         float _target = 0f;
-        StopCoroutine(_coroutine);
+
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+
         _coroutine = StartCoroutine(ChangingVolume(_target));
     }
 
@@ -33,14 +38,14 @@ public class Alarm : MonoBehaviour
         _audio.volume = 0f;
     }
 
-    private IEnumerator ChangingVolume(float _target)
+    private IEnumerator ChangingVolume(float target)
     {
         float waitTime = 0.05f;
         var waitType = new WaitForSeconds(waitTime);
 
-        while (_audio.volume != _target)
+        while (_audio.volume != target)
         {
-            _audio.volume = Mathf.MoveTowards(_audio.volume, _target, _volumeScale);
+            _audio.volume = Mathf.MoveTowards(_audio.volume, target, _volumeScale);
             yield return waitType;
         }
     }
